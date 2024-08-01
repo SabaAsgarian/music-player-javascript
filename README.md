@@ -6,7 +6,7 @@ music-player-javascript
 
 
 
-![pllluy](https://github.com/user-attaachments/assets/bea90a58-bf18-43d6-a95c-b0fea1aad017)
+![pely](https://github.com/user-attachments/assets/39df968b-465f-4943-a8a9-4cdafbf9c969)
 
 
 
