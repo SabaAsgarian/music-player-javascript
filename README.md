@@ -17,7 +17,7 @@ music-player-javascript
 
 
 
-- [Demo Project](https://sabaasgarian.github.io/Music-Player-js/)
+- [Demo Project]( https://sabaasgarian.github.io/music-player-javascript/)
 
 - Developed by Saba Asgarian
 
