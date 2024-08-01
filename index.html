@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player With search & login</title>
+    <link rel="stylesheet" href="css/fontello.css">
+    <link rel="stylesheet" href="css/javascript.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+        src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/output.css">
+    <style>
+
+    </style>
+</head>
+
+<body class="bg-bg h-[120vh] flex justify-center bg-cover bg-repeat font-ns capitalize">
+    <main class="w-[98%] xl:w-[95%] h-[130vh] m-[1.5%] bg-[#080c2631]">
+        <div class="row h-[60%]">
+            <div class="w-[30%] h-full  border-r-2 border-[#ffffff80] ">
+                <div class="row px-[2%] *:text-white *:my-[3%]">
+                     <!-- my signature -->
+                <figure
+                class=" group w-[100px] h-[100px] flex flex-wrap relative z-10 left-[10px] bottom-[-5%] rounded-full cursor-pointer animate-pulse">
+                <img class="bg-[#c948a0] relative z-10 w-full h-full object-cover rounded-full" src="img/me.png"
+                    alt="">
+                <div
+                    class="group-hover:right-[-41px] group-hover:opacity-100 group-hover:visible w-[40px] h-[90px] absolute top-[-30%] right-[70px] opacity-0 invisible duration-[.4s] ease-linear hover:right-[-45px] hover:opacity-100 hover:visible">
+                    <a class="flex items-center justify-center w-full h-[40px] rounded-full bg-[#c948a0] text-white flex-[18px] mb-[5px] duration-[.3s] ease-linear relative hover:bg-pink hover:text-black"
+                        href="https://github.com/SabaAsgarian" target="_blank"><i
+                            class="icon-github-circled-1"></i></a>
+                    <a class="flex items-center justify-center w-full h-[40px] rounded-full bg-[#c948a0] text-white flex-[18px] mb-[5px] duration-[.3s] ease-linear relative hover:bg-pink hover:text-black"
+                        href="https://www.linkedin.com/in/saba-asgarian-69161088?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                        target="_blank"><i class=" icon-linkedin-1"></i></a>
+                    <a class="flex items-center justify-center w-full h-[40px] rounded-full bg-[#c948a0] text-white flex-[18px] mb-[5px] duration-[.3s] ease-linear relative hover:bg-pink hover:text-black"
+                        href="https://www.instagram.com/saba_asgarian_web?igsh=M2Z2dTU3cHFmeW1o&utm_source=qr"
+                        target="_blank"><i class="icon-instagram-2"></i></a>
+                    <a class="flex items-center justify-center w-full h-[40px] rounded-full bg-[#c948a0] text-white flex-[18px] mb-[5px] duration-[.3s] ease-linear relative hover:bg-pink hover:text-black"
+                        href="mailto:computer.sabaa@gmail.com" target="_blank"><i class="icon-mail"></i></a>
+
+                </div>
+            </figure>
+            <!-- my signature -->
+                    <h6 class="w-full h-[20%] text-[15px] font-nr font-extrabold">Welcome Dear:</h6>
+                    <h1 id="h1" class="w-full h-[20%] text-[18px] xl:text=[30px] font-nr font-extrabold">saba asgarian
+                    </h1>
+                    <ul
+                        class="flex flex-wrap w-full h-[60%] justify-start items-center   *:text-[20px]  *:text-start *:rounded-lg px-[5%]">
+                        <li class="w-full home"><i class="icon-home-3"></i> Home</li>
+                        <li class="w-full" id="btn"><i class="icon-login"></i>login</li>
+                        <div class="popup hide justify-center items-center flex w-full h-full *:text-center bg-bg">
+                            <div class="row justify-center items-center ">
+                                <div
+                                    class="w-[50%] h-full  *:rounded-lg rounded-xl bg-[#3b22dd38] shadow-2xl shadow-indigo-400">
+                                    <p class="my-[5%]">UserName:</p>
+                                    <input class=" text-center w-[60%] h-full !text-black" type="text"
+                                        placeholder="username" id="user">
+                                    <p class="my-[5%]">PassWord:</p>
+                                    <input class="text-center w-[60%] h-full !text-black" type="password"
+                                        placeholder="password" id="password"> <br>
+                                    <input
+                                        class="hover:bg-[#382854fb] w-[20%] h-full   bg-[#6722ddd6] cursor-pointer my-[5%] text-white"
+                                        type="submit" id="submit">
+                                </div>
+                                <span
+                                    class="span cursor-pointer bg-white !text-black absolute bottom-0 right-6 md:top-0 md:right-[70px] text-[15px] w-[20px] h-[20px] md:w-[25px] md:h-[25px] flex justify-center items-center text-center rounded-full">X</span>
+                            </div>
+                        </div>
+
+                        <li class="w-full" id="out"><i class="icon-logout-1"></i>logout</li>
+                        <li class="w-full" id="search"><i class=" icon-search-3"></i><input
+                                class="rounded-lg bg-transparent w-[60%]" type="search" placeholder="  search"></li>
+
+                    </ul>
+                </div>
+               
+            </div>
+            <div class="w-[70%] h-full ">
+                <div class="row h-full">
+                    <div class="w-full h-[50%]">
+                        <div class="flex flex-wrap ">
+                            <h2 class="text-white text-start font-ns text-[18px] xl:[25px] font-extrabold p-[1%]">
+                                foreign Language Musics
+                            </h2>
+                            <div class="swiper">
+                                <div class="swiper-wrapper  ">
+                                    <div class="swiper-slide a  ">
+                                        <img class="rounded-full w-[65%]" src="img/demon.jfif" alt="">
+                                        <audio src="audio/Demons.mp3"></audio>
+                                    </div>
+                                    <div class="swiper-slide b">
+                                        <img class="rounded-full w-[65%]" src="img/ilomilo.jfif" alt="">
+                                        <audio src="audio/Billie_Eilish_ilomilo_Lyrics_.hd.mp3"></audio>
+                                    </div>
+                                    <div class="swiper-slide c"><img class="w-[65%] rounded-full"
+                                            src="img/Someone_to_You_by_Banners.png" alt="">
+                                        <audio src="audio/BANNERS_Someone_To_You_lyrics_.hd.mp3"></audio>
+                                    </div>
+                                    <div class="swiper-slide d">
+                                        <img class="rounded-full w-[65%]" src="img/patan.jfif" alt="">
+                                        <audio src="audio/Jhoome Jo Pathaan(PagalWorldl).mp3"></audio>
+                                    </div>
+                                    <div class="swiper-slide e">
+                                        <img class="rounded-full w-[65%]" src="img/black.jfif" alt="">
+                                        <audio src="audio/Heat_Stroke_Black_Math.hd.mp3"></audio>
+                                    </div>
+                                    <div class="swiper-slide f">
+                                        <img class="rounded-full w-[65%]" src="img/femme.jfif" alt="">
+                                        <audio src="audio/Femme like you by monaldin.mp3"></audio>
+                                    </div>
+                                    <div class="swiper-slide g">
+                                        <img class="rounded-full w-[65%]" src="img/freaks.jfif" alt="">
+                                        <audio src="audio/Freaks by surf curse.mp3"></audio>
+                                    </div>
+                                    <div class="swiper-slide h">
+                                        <img class="rounded-full w-[65%]" src="img/max.jfif" alt="">
+                                        <audio src="audio/MAX - Puppeteer (AUDIO).mp3"></audio>
+                                    </div>
+
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-1/2">
+                        <div class="flex flex-wrap">
+                            <h2 class="text-white text-start font-ns text-[18px] xl:[25px] font-extrabold p-[1%]">Farsi
+                                Language Musics
+                            </h2>
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide i ">
+                                        <img class="rounded-full w-[65%]" src="img/mohsen.jpeg" alt="">
+                                        <audio
+                                            src="audio/Mohsen Yegane & Mohsen Chavoshi - Cheshmaye To (320).mp3"></audio>
+                                    </div>
+                                    <div class="swiper-slide j">
+                                        <img class="rounded-full w-[65%]" src="img/beraghsa.jpg" alt="">
+                                        <audio src="audio/Mohsen Chavoshi - Beraghsa (128).mp3"></audio>
+                                    </div>
+                                    <div class="swiper-slide k"><img class="w-[65%] rounded-full" src="img/Dast.jpg"
+                                            alt="">
+                                        <audio src="audio/Mazyar Fallahi - Dast Bezan (128).mp3"></audio>
+                                    </div>
+                                    <div class="swiper-slide l">
+                                        <img class="rounded-full w-[65%]" src="img/Moein.jpg" alt="">
+                                        <audio src="audio/Moein _ termeh Va Atlas (320).mp3"></audio>
+                                    </div>
+                                    <div class="swiper-slide m">
+                                        <img class="rounded-full w-[71%]" src="img/ebi.jpg" alt="">
+                                        <audio src="audio/ebiHarighe Sabz.mp3"></audio>
+                                    </div>
+
+
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full h-[40%] ">
+            <div class="music-player ">
+                <div class="album-cover mt-[1%]">
+                    <img src="img/demon.jfif" id="rotatingImage" alt="" />
+                    <span class="point"></span>
+                </div>
+
+                <h2>Demons</h2>
+                <p>Imagine Dragons</p>
+
+                <audio id="song">
+                    <source src="audio/Demons.mp3" type="audio/mp3" />
+                </audio>
+                <div class="w-full h-full flex justify-center items-center py-[1%]">
+                    <i class="icon-volume-up"></i>
+                    <input type="range" value="1" id="volume" min="0" max="1" step="0.1">
+                </div>
+                <input type="range" value="0" id="progress" />
+
+                <div class="controls">
+                    <button class="backward">
+                        <i class="icon-backward"></i>
+                    </button>
+                    <button class="play-pause-btn">
+                        <i class=" icon-play" id="controlIcon"></i>
+                    </button>
+                    <button class="forward">
+                        <i class=" icon-forward"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    const home = document.querySelector('.home');
+
+    home.addEventListener('click', () => {
+        location.reload();
+    });
+    const li = document.querySelectorAll('ul>li')
+    li.forEach(function (value) {
+        value.addEventListener('click', function (event) {
+            // reset
+            li.forEach(function (item) {
+                item.style.background = 'transparent'
+            })
+            // reset
+            value.style.background = '#3b3e68c9'
+        })
+    })
+    //chang li back color
+    //controlls
+    const progress = document.getElementById("progress");
+    const song = document.getElementById("song");
+    const controlIcon = document.getElementById("controlIcon");
+    const playPauseButton = document.querySelector(".play-pause-btn");
+    const forwardButton = document.querySelector(".controls button.forward");
+    const backwardButton = document.querySelector(".controls button.backward");
+    const rotatingImage = document.getElementById("rotatingImage");
+    const songName = document.querySelector(".music-player h2");
+    const artistName = document.querySelector(".music-player p");
+
+    let rotating = false;
+    let currentRotation = 0;
+    let rotationInterval;
+
+    const songs = [
+        {
+            title: "Demons",
+            name: "Imagine Dragons",
+            source: "audio/Demons.mp3",
+            cover: "img/demon.jfif",
+        },
+        {
+            title: "ilomilo",
+            name: "Billie Eilish",
+            source: "audio/Billie_Eilish_ilomilo_Lyrics_.hd.mp3",
+            cover: "img/ilomilo.jfif",
+        },
+        {
+            title: "Someone To You",
+            name: "BANNERS",
+            source: "audio/BANNERS_Someone_To_You_lyrics_.hd.mp3",
+            cover: "img/Someone_to_You_by_Banners.png",
+        },
+        {
+            title: "Jhoome Jo Pathaan",
+            name: "Arjit Singh",
+            source: "audio/Jhoome Jo Pathaan(PagalWorldl).mp3",
+            cover: "img/patan.jfif",
+        },
+        {
+            title: "Heat Stroke",
+            name: "BlackMath",
+            source: "audio/Heat_Stroke_Black_Math.hd.mp3",
+            cover: "img/black.jfif",
+        },
+        {
+            title: "Femme like you by monaldin.mp3",
+            name: "monaldin",
+            source: "audio/Femme like you by monaldin.mp3",
+            cover: "img/femme.jfif",
+        },
+        {
+            title: "Freaks",
+            name: " surf curse",
+            source: "audio/Freaks by surf curse.mp3",
+            cover: "img/freaks.jfif",
+        },
+        {
+            title: "MAX",
+            name: "Puppeteer",
+            source: "audio/MAX - Puppeteer (AUDIO).mp3",
+            cover: "img/max.jfif",
+        },
+        {
+            title: "Cheshmaye To ",
+            name: "Mohsen Yegane & Mohsen Chavoshi",
+            source: "audio/Mohsen Yegane & Mohsen Chavoshi - Cheshmaye To (320).mp3",
+            cover: "img/mohsen.jpeg",
+        },
+        {
+            title: "Beraghsa",
+            name: "Mohsen Chavoshi",
+            source: "audio/Mohsen Chavoshi - Beraghsa (128).mp3",
+            cover: "img/beraghsa.jpg",
+        },
+        {
+            title: "Dast Bezan",
+            name: "Mazyar Fallahi",
+            source: "audio/Mazyar Fallahi - Dast Bezan (128).mp3",
+            cover: "img/Dast.jpg",
+        },
+        {
+            title: "termeh Va Atlas",
+            name: "Moein3",
+            source: "audio/Moein _ termeh Va Atlas (320).mp3",
+            cover: "img/Moein.jpg",
+        },
+        {
+            title: "Harighe Sabz",
+            name: "Ebi",
+            source: "audio/ebiHarighe Sabz.mp3",
+            cover: "img/ebi.jpg",
+        },
+
+    ];
+
+    let currentSongIndex = 0;
+
+    function startRotation() {
+        if (!rotating) {
+            rotating = true;
+            rotationInterval = setInterval(rotateImage, 50);
+        }
+    }
+
+    function pauseRotation() {
+        clearInterval(rotationInterval);
+        rotating = false;
+    }
+
+    function rotateImage() {
+        currentRotation += 1;
+        rotatingImage.style.transform = `rotate(${currentRotation}deg)`;
+    }
+
+    function updateSongInfo() {
+        songName.textContent = songs[currentSongIndex].title;
+        artistName.textContent = songs[currentSongIndex].name;
+        song.src = songs[currentSongIndex].source;
+        rotatingImage.src = songs[currentSongIndex].cover;
+
+        song.addEventListener("loadeddata", function () { });
+    }
+
+    song.addEventListener("loadedmetadata", function () {
+        progress.max = song.duration;
+        progress.value = song.currentTime;
+    });
+
+    song.addEventListener("ended", function () {
+        currentSongIndex = (currentSongIndex + 1) % songs.length;
+        updateSongInfo();
+        playPause();
+    });
+
+    song.addEventListener("timeupdate", function () {
+        if (!song.paused) {
+            progress.value = song.currentTime;
+        }
+    });
+
+    function playPause() {
+        if (song.paused) {
+            song.play();
+            controlIcon.classList.add("icon-pause-1");
+            controlIcon.classList.remove("icon-play");
+            startRotation();
+        } else {
+            song.pause();
+            controlIcon.classList.remove("icon-pause-1");
+            controlIcon.classList.add("icon-play");
+            pauseRotation();
+        }
+    }
+
+    playPauseButton.addEventListener("click", playPause);
+
+    progress.addEventListener("input", function () {
+        song.currentTime = progress.value;
+    });
+
+    progress.addEventListener("change", function () {
+        song.play();
+        controlIcon.classList.add("icon-pause-1");
+        controlIcon.classList.remove("icon-play");
+        startRotation();
+    });
+
+    forwardButton.addEventListener("click", function () {
+        currentSongIndex = (currentSongIndex + 1) % songs.length;
+        updateSongInfo();
+        playPause();
+    });
+
+    backwardButton.addEventListener("click", function () {
+        currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+        updateSongInfo();
+        playPause();
+    });
+    const volume = document.getElementById("volume");
+
+    volume.addEventListener("input", function () {
+        song.volume = volume.value;
+    });
+
+    updateSongInfo();
+    //controlls
+    // swiper
+    var swiper = new Swiper('.swiper', {
+        slidesPerView: 3.5,
+        direction: getDirection(),
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        on: {
+            resize: function () {
+                swiper.changeDirection(getDirection());
+            },
+        },
+    });
+
+    function getDirection() {
+        var windowWidth = window.innerWidth;
+        var direction = window.innerWidth <= 760 ? 'horizontal' : 'horizontal';
+
+        return direction;
+    }
+    // swiper
+    // Get the swiper slides with classes a, b, and c
+    const swiperSlides = document.querySelectorAll('.swiper-slide.a, .swiper-slide.b, .swiper-slide.c , .swiper-slide.d , .swiper-slide.e, .swiper-slide.f, .swiper-slide.g, .swiper-slide.h, .swiper-slide.i , .swiper-slide.j , .swiper-slide.k , .swiper-slide.l , .swiper-slide.m');
+
+    // Add an event listener to each slide
+    swiperSlides.forEach((slide) => {
+        slide.addEventListener('click', (event) => {
+            // Get the index of the clicked slide
+            const slideIndex = Array.prototype.indexOf.call(swiperSlides, slide);
+
+            // Update the music player with the corresponding song information
+            currentSongIndex = slideIndex;
+            updateSongInfo();
+            playPause();
+        });
+    });
+    //  login
+    const btn = document.querySelector('#btn')
+    const out = document.querySelector('#out')
+
+    const popup = document.querySelector('.popup')
+    const close = document.querySelector('.span')
+    const user = document.getElementById('user')
+    const pass = document.getElementById('password')
+    const submit = document.getElementById('submit')
+    const h1 = document.getElementById('h1')
+
+    btn.addEventListener('click', () => {
+        popup.classList.remove('hide')
+    })
+
+    close.addEventListener('click', () => {
+        popup.classList.add('hide')
+    })
+
+    submit.addEventListener('click', () => {
+        h1.textContent = user.value
+        popup.classList.add('hide')
+    })
+    out.addEventListener('click', () => {
+        h1.textContent = 'saba asgarian' // default value
+    })
+    //  login
+    // Get the search input field
+    const searchInput = document.querySelector('#search');
+
+    // Get all swiper slides
+
+
+    // Add an event listener to the search input field
+    searchInput.addEventListener('input', (event) => {
+        const searchTerm = event.target.value.toLowerCase();
+        swiperSlides.forEach((slide) => {
+            const imgSrc = slide.querySelector('img').src;
+            const imgName = imgSrc.split('/').pop();
+            if (imgName.toLowerCase().includes(searchTerm)) {
+                slide.classList.add('marked');
+            } else {
+                slide.classList.remove('marked');
+            }
+        });
+    });
+</script>
+
+</html>
