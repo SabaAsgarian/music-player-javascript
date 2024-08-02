@@ -183,7 +183,7 @@
                     <input type="range" value="1" id="volume" min="0" max="1" step="0.1">
                 </div>
                 <input type="range" value="0" id="progress" />
-
+                <p id="duration">00:00</p>
                 <div class="controls">
                     <button class="backward">
                         <i class="icon-backward"></i>
@@ -220,6 +220,7 @@
     //chang li back color
     //controlls
     const progress = document.getElementById("progress");
+    const durationElement = document.getElementById('duration');
     const song = document.getElementById("song");
     const controlIcon = document.getElementById("controlIcon");
     const playPauseButton = document.querySelector(".play-pause-btn");
@@ -254,7 +255,7 @@
         },
         {
             title: "Jhoome Jo Pathaan",
-            name: "Arjit Singh",
+            name: "Arijit Singh",
             source: "audio/Jhoome Jo Pathaan(PagalWorldl).mp3",
             cover: "img/patan.jfif",
         },
@@ -265,7 +266,7 @@
             cover: "img/black.jfif",
         },
         {
-            title: "Femme like you by monaldin.mp3",
+            title: "Femme like you by monaldin",
             name: "monaldin",
             source: "audio/Femme like you by monaldin.mp3",
             cover: "img/femme.jfif",
@@ -302,7 +303,7 @@
         },
         {
             title: "termeh Va Atlas",
-            name: "Moein3",
+            name: "Moein",
             source: "audio/Moein _ termeh Va Atlas (320).mp3",
             cover: "img/Moein.jpg",
         },
@@ -346,6 +347,7 @@
     song.addEventListener("loadedmetadata", function () {
         progress.max = song.duration;
         progress.value = song.currentTime;
+        updateDuration(song.duration);
     });
 
     song.addEventListener("ended", function () {
@@ -357,6 +359,7 @@
     song.addEventListener("timeupdate", function () {
         if (!song.paused) {
             progress.value = song.currentTime;
+            updateDuration(song.currentTime);
         }
     });
 
@@ -378,6 +381,7 @@
 
     progress.addEventListener("input", function () {
         song.currentTime = progress.value;
+        updateDuration(song.currentTime);
     });
 
     progress.addEventListener("change", function () {
@@ -386,7 +390,11 @@
         controlIcon.classList.remove("icon-play");
         startRotation();
     });
-
+    function updateDuration(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    durationElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
     forwardButton.addEventListener("click", function () {
         currentSongIndex = (currentSongIndex + 1) % songs.length;
         updateSongInfo();
