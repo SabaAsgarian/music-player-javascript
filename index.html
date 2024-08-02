@@ -49,18 +49,18 @@
                     </h1>
                     <ul
                         class="flex flex-wrap w-full h-[60%] justify-start items-center   *:text-[20px]  *:text-start *:rounded-lg px-[5%]">
-                        <li class="w-full home"><i class="icon-home-3"></i> Home</li>
-                        <li class="w-full" id="btn"><i class="icon-login"></i>login</li>
+                        <li class="w-full home cursor-pointer"><i class="icon-home-3"></i> Home</li>
+                        <li class="w-full cursor-pointer" id="btn"><i class="icon-login"></i>login</li>
                         <div class="popup hide justify-center items-center flex w-full h-full *:text-center bg-bg">
                             <div class="row justify-center items-center ">
                                 <div
                                     class="w-[50%] h-full  *:rounded-lg rounded-xl bg-[#3b22dd38] shadow-2xl shadow-indigo-400">
                                     <p class="my-[5%]">UserName:</p>
                                     <input class=" text-center w-[60%] h-full !text-black" type="text"
-                                        placeholder="username" id="user">
+                                        placeholder="username" id="user" maxlength="20">
                                     <p class="my-[5%]">PassWord:</p>
                                     <input class="text-center w-[60%] h-full !text-black" type="password"
-                                        placeholder="password" id="password"> <br>
+                                        placeholder="password" id="password" maxlength="20"> <br>
                                     <input
                                         class="hover:bg-[#382854fb] w-[20%] h-full   bg-[#6722ddd6] cursor-pointer my-[5%] text-white"
                                         type="submit" id="submit">
@@ -70,8 +70,8 @@
                             </div>
                         </div>
 
-                        <li class="w-full" id="out"><i class="icon-logout-1"></i>logout</li>
-                        <li class="w-full" id="search"><i class=" icon-search-3"></i><input
+                        <li class="w-full cursor-pointer" id="out"><i class="icon-logout-1"></i>logout</li>
+                        <li class="w-full cursor-pointer" id="search"><i class=" icon-search-3"></i><input
                                 class="rounded-lg bg-transparent w-[60%]" type="search" placeholder="  search"></li>
 
                     </ul>
@@ -166,7 +166,7 @@
             </div>
         </div>
         <div class="w-full h-[40%] ">
-            <div class="music-player ">
+            <div class="music-player w-full h-full">
                 <div class="album-cover mt-[1%]">
                     <img src="img/demon.jfif" id="rotatingImage" alt="" />
                     <span class="point"></span>
@@ -407,12 +407,28 @@
     updateSongInfo();
     //controlls
     // swiper
-    var swiper = new Swiper('.swiper', {
+   var swiper = new Swiper('.swiper', {
         slidesPerView: 3.5,
         direction: getDirection(),
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            500: { // sm
+                slidesPerView: 2,
+            },
+            768: { // md
+                slidesPerView: 3,
+            },
+            1280: { // lg to 2xl
+                slidesPerView: 3.5,
+            },
+        },
+        on: {
+            resize: function () {
+                swiper.changeDirection(getDirection());
+            },
         },
         on: {
             resize: function () {
@@ -420,6 +436,7 @@
             },
         },
     });
+    
 
     function getDirection() {
         var windowWidth = window.innerWidth;
@@ -477,18 +494,24 @@
 
 
     // Add an event listener to the search input field
-    searchInput.addEventListener('input', (event) => {
-        const searchTerm = event.target.value.toLowerCase();
-        swiperSlides.forEach((slide) => {
-            const imgSrc = slide.querySelector('img').src;
-            const imgName = imgSrc.split('/').pop();
-            if (imgName.toLowerCase().includes(searchTerm)) {
-                slide.classList.add('marked');
-            } else {
-                slide.classList.remove('marked');
-            }
-        });
+     searchInput.addEventListener('input', (event) => {
+  const searchTerm = event.target.value.toLowerCase();
+  if (searchTerm === '') {
+    swiperSlides.forEach((slide) => {
+      slide.classList.remove('marked');
     });
+  } else {
+    swiperSlides.forEach((slide) => {
+      const imgSrc = slide.querySelector('img').src;
+      const imgName = imgSrc.split('/').pop();
+      if (imgName.toLowerCase().includes(searchTerm)) {
+        slide.classList.add('marked');
+      } else {
+        slide.classList.remove('marked');
+      }
+    });
+  }
+});
 </script>
 
 </html>
